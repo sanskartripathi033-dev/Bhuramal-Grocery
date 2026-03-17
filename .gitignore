@@ -1,0 +1,8 @@
+node_modules
+.next
+.env.local
+.firebase
+firebase-debug.log
+build_log.txt
+dist
+out

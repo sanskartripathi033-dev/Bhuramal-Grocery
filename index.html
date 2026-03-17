@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhuramal Grocery — Premium Online Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2b1e;
+            --accent: #d4af37;
+            --accent-soft: rgba(212, 175, 55, 0.1);
+            --text: #f5f5f0;
+            --text-dark: #2c3e2d;
+            --bg: #0f1811;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Background Animation --- */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 10% 20%, rgba(26, 43, 30, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- Header --- */
+        header {
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            padding: 100px 0 150px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 8vw, 84px);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        h1 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-desc {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 20px;
+            color: rgba(245, 245, 240, 0.7);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        /* --- Mockup Showcase --- */
+        .showcase {
+            margin-top: -50px;
+            perspective: 2000px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .mockup-img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            transform: rotateX(10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .mockup-img:hover {
+            transform: rotateX(0deg) scale(1.02);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 0 50px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 100px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: rgba(245, 245, 240, 0.4);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .hero {
+                padding: 60px 0 100px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header>
+            <a href="#" class="logo">BHURAMAL</a>
+        </header>
+
+        <section class="hero">
+            <div class="badge">Next.js + Firebase Power</div>
+            <h1>Fresh Farm Grocery,<br><span>Now Online.</span></h1>
+            <p class="hero-desc">Experience the future of grocery shopping with our high-performance E-commerce
+                platform. Farm-fresh quality, delivered with speed.</p>
+
+            <div class="cta-group">
+                <a href="https://your-vercel-link-here.vercel.app" class="btn btn-primary" id="live-demo">🚀 View Live
+                    Demo</a>
+                <a href="README.md" class="btn btn-secondary">📄 View Documentation</a>
+            </div>
+        </section>
+
+        <div class="showcase">
+            <!-- Using the generated mockup image -->
+            <img src="bhuramal_grocery_mockup_1773635281390.png" alt="Bhuramal Grocery UI" class="mockup-img">
+        </div>
+
+        <footer>
+            <div class="footer-logo">Bhuramal Grocery</div>
+            <p class="copyright">&copy; 2024 Bhuramal Grocery Store. Built with Next.js and ❤️.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
